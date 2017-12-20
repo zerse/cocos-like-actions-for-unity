@@ -10,25 +10,16 @@ namespace CocosLikeActions {
 
     protected override void Start() {
       elapsedTime = 0.0f;
-
-      // if Duration is Zero, just run like InstantAction
-      // Step() never being called
-      if ( Duration == 0.0f ) {
-        Update( 1.0f );
-        Stop();
-      }
     }
 
     protected override void Step( float deltaTime ) {
       elapsedTime += deltaTime;
 
-      // Start() will check whether Duration is zero,
-      // so it does not need to check division-by-zero exception here
-      var progress = elapsedTime / Duration;
-      if ( progress >= 1.0f ) {
+      if ( elapsedTime >= Duration ) {
         Update( 1.0f );
         Stop();
       } else {
+        var progress = elapsedTime / Duration;
         Update( progress );
       }
     }

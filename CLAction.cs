@@ -41,11 +41,20 @@ namespace CocosLikeActions {
       done = true;
     }
 
-    /*
-    */
-
     private GameObject targetGameObject;
     //private GameObject originalTargetGameObject;
     private bool done;
+
+    protected static Action GetStartDelegate( CLAction action ) {
+      return action.Start;
+    }
+
+    protected static Action GetStopDelegate( CLAction action ) {
+      return action.Start;
+    }
+
+    protected static Action<float> GetUpdateDelegate( CLAction action ) {
+      return action.Update;
+    }
   }
 }
